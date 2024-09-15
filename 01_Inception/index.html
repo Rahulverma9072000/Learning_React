@@ -1,0 +1,21 @@
+<!-- VS Code uses Emmet , Emmet basically generates few code for us . 
+if you type html:5 and hit enter than some code will come bcoz of emmet  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaste React </title>
+</head>
+<body>
+    <div id = "root">
+    </div>
+    <script>
+        const heading  = document.createElement("h1");
+        heading.innerHTML = "hello world from javascript ";
+        // find the root 
+        const root = document.getElementById("root");
+        root.appendChild(heading);
+    </script>
+</body>
+</html>

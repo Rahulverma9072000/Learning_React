@@ -1,0 +1,75 @@
+First , Make a helloworld program using just Javascript 
+        const heading  = document.createElement("h1");
+        heading.innerHTML = "hello world from javascript ";
+        // find the root 
+        const root = document.getElementById("root");
+        root.appendChild(heading);
+Now here , how browser understands createElement , getElementById and all  ? 
+These are super powers which browsers already have in it , browser have a Javascript engine in it . 
+
+But Browser does not know what react is ? 
+So first thing we have to do is bring React into our Project . 
+
+First way to add react into our Project -> Using CDN (Content Delivery Network ) websites where React code is hosted .
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+Now our browser will understand the React code . 
+Following this link -> it's React code written by javascript and written by Facebook . 
+
+//Why there are 2 files in cdn link ?
+// Why React make 2 different files for Core React Code and for ReactDOM code . 
+React not only works on browser , it works on React Native Phone , and many things . 
+
+Now we will build basic hello world program in React 
+
+//Most costly/expensive operation in the WebPage Browser ?
+Most important operation is when the DOM needs to be manipulated , where DOM Tree is changed .
+All these framework and libraries are trying to solve this problem only . 
+
+
+const parent = React.createElement(
+    "div" ,
+    {id : "parent" },[ 
+        React.createElement("div" , {id : "child" },[
+            React.createElement("h1" , {} , "I 'm an h1 tag "),React.createElement("h2",{},"I'm an h2 tag")]) ,
+
+        React.createElement("div" , {id : "child2" },[
+            React.createElement("h1" , {} , "I 'm an h1 tag "),React.createElement("h2",{},"I'm an h2 tag")])
+    ]
+);
+writing code like this is very tedious , so there is something known as JSX 
+
+
+
+<body>
+    <div id = "root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <script src = "app.js">
+    </script>
+
+</body>
+
+Will the order of script tags matter here ? 
+yes , it matters and if you place cdn links below app.js code than it give ERROR , Reference Error , React is not defined . 
+
+
+
+
+
+    <div id = "root"> React Not Rendered </div>
+We are trying to render our React code in this div id = "root" what if there is alredy something written ?
+whatever it will be written than it will replaced by our React Code . 
+
+if on index.html if you add h1 tag above and below the <div id ="root"> </div> , than react will not replace this h1 , React is only responsible for div id = "root" 
+
+
+Difference between Library and Framework 
+React can only work in small portion of page itself like header , footer only . 
+This is why React is called library , It can work independently in a small portion of your app aswell .
+it's not a full fledge framework . It's just some piece of code written by Facebook developer 
+in React you just import cdn link and start using React in small piece of your app .
+At the End of day React is just javascript . 
+Framework will require you to create an App completely .
