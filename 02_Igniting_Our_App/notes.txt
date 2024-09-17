@@ -1,0 +1,144 @@
+Igniting Our app means : Light our App , basically what things we need to do in our app for production . 
+
+The Code we have written in Episode - 1 , html , js , css code is this code ready to push to production ? 
+No , because this code is not optimised code . 
+To Optimise Code : 
+Minimify Our Code 
+Bundle this file 
+Compress this file 
+To make our code send to production i have to do may things:
+bundling 
+code splitting
+chunking 
+image optimisation 
+remove the code 
+compress and minify the code . 
+
+Should know what things are happening behind the scene when we write npx create-react-app
+
+What is npm ? npm does not stands for Node Package Manager 
+npm manages packages , all the packages use in our React App are hosted on npm . 
+
+
+To Put npm in our project :
+npm init -y : To remove the usual steps we put -y 
+npm init : We will use and after some steps say yes .. 
+A package.json file will come in our directory 
+
+npm will take care of our dependencies and thier version of that packages , it will take care in package.json 
+package.json will be the configuration for npm . 
+Now we can start installing packages into our projects 
+
+Most important package in our project is bundler .
+
+
+Whole code neads to minified , bundled , packaged , cleaned ... ie bundler do all this things for us 
+webpack,parcel,veet are the bundler .
+npm install -D parcel : Adding parcel as devDependency 
+
+2 Type of depedencies in our package : Dev depedencies , Normal depedencies
+Dev depedencies : Its generally required for our development phase .
+Normal depedencies : Used in Production also .
+
+// In dpendency there are 2 symbols : ~ , ^ 
+Ex Curr Version : 2.8.5
+// Tomorrow new minor version come : Parcel will update it version if we use ^ (carrot)
+// Major Upgrade version come : Parcel will install the major version automatically when ~ (tilde) is put . 
+
+// package-lock.json : Keeps a track of exact version of the packages that is installed , kind of lock the version 
+// package.json does not have the exact version it will be storing as "^2.8.5" and exact version in package-lock.json might be "2.8.6"
+// integrity in package-lock.json : is hash , this hash is present " It's heard that its working on my local but its not working on production"
+// to avoid that package-lock.json keeps the hash , whatever is in my dev machine it's the same version deployed on the production . 
+// While installing parcel , we get node_modules folder also , this node_modules contain all the code we fetch from npm . 
+// node_modules is the heaviest , so we avoid putting on github . 
+// depedencies have thier depedencies , those depedencies can have thier own depedencies ... and so on and this is known as Transistive depedencies . 
+// To avoid putting node_modules in the github , make a file ".gitignore" and type "/node_modules"
+
+
+
+//How is parcel managing all these things . 
+// In an whole project how many package.json , package-lock.json we have ? 
+// Every depedencies have thier own package.json , package-lock.json. So a lot of package.json . 
+
+
+//node_modules can be recreated every time bcoz we have package.json and package-lock.json just type : npm install
+
+We will use parcel to ignite our app.
+npx parcel index.html(Source file) + Enter  -> Server Started 
+
+Diff btwn npx and npm ? 
+npm -> installing a package 
+npx -> execute a package 
+
+
+Ways to get react into our project ? 
+Using cdn links 
+Using npm .
+react is a javascript package and its hosted on npm also . 
+
+cdn is not a preferred way to import react into our project . Why ? 
+Why to make a network call when we can have it in local in node_modules .
+There can be a case if react code access link changes . 
+
+
+
+
+(App.js) 
+import React from "react"
+import ReactDOM from "react";
+const heading = React.createElement("h1",{},"Hi from React"); //heading
+const root = ReactDOM.createElement(document.getElementById("root"));
+root.render(heading);
+This will be giving me error that Browser scripts cannot have imports or exports .
+In index.html ,
+<body>
+    <div id = "root"></div>
+    <script src="./App.js"></script> // it's considering as the normal javascript
+</body>
+And Error is because Normal javascript cannot have import/export . So we have to explicitly tell it's a module .
+<script type = "module" src = "./App.js" >
+
+
+#Parcel Role : 
+- Dev Build
+- Local Server 
+- HMR (Hot Module Replacement ) = Like it automatically refreshing the page as soon as something changes in code . 
+- File Watching Algorithm - written in C++ 
+- Faster Builds becuase it's also doing caching ( you can see the folder in the same directory ie .parcel-cache )
+- Image Optimisation 
+- Minification 
+- Bundling 
+- Compress
+- Consistent Hashing = Keep a track
+- Code Splitting 
+- Differential Bundling = to support older browsers 
+- Diagnostics 
+- Error Handling 
+- HTTPs 
+- Tree Shaking = Remove unused code .
+- Different dev and production bundles . 
+
+
+
+"main": "App.js", Remove this line from package.json because to make build it will give error , its the starting point of our project and it's actually index.html
+
+//What's the dist folder created ? 
+when we do npx parcel index.html 
+It actually generate a development build for the project and put it on dist folder and host it on 1234
+
+//To generate production build of the project : npx parcel build index.html , this production build will take more time compared to development build .
+.parcel-cache , dist can be generated again so add it into .gitignore
+
+
+
+
+
+//Add Compatibility to different browsers 
+//This can configure the country like it should work on 90% of US peoples . 
+browserlist 
+  "browserslist":[
+    "last 2 Chrome version",
+    "last 2 Firefox version"
+  ]
+Add this in package.json 
+//how do we get to know what to type : browserlist.dev

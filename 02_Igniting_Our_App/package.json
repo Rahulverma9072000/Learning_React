@@ -1,0 +1,24 @@
+{
+  "name": "02_igniting_our_app",
+  "version": "1.0.0",
+  "description": "This is Namaste React iginiting our app",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "react-learning"
+  ],
+  "author": "Rahul Verma",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  },
+  "browserslist" :[
+    "last 2 chrome version",
+    "last 2 firefox version"
+  ]
+}
